@@ -1,5 +1,5 @@
 ﻿#include <iostream>
-#include <Windows.h>
+//#include <Windows.h>
 #include <time.h>
 #include <string>
 #include "Console.h"
