@@ -30,7 +30,7 @@ int leftCol = 5, rightCol = leftCol + boatMax * 4.0 + 33; //107//               
                                                     //                             \\\\\\\\\\\///////////           # #         |
 int iRowMax = 2 * leftRow + highMap;                //                               \\\\\\\\\/////////         #    #    #     |
 int iColMax = 2 * rightCol;                         //                                                         ###   #   ###    |
-int rowConsoleMax = 4.6 * iRowMax;                  //Размер срок консоли  vConsole mapCons;//                  ##  ###  ##     |
+int rowConsoleMax = 4.6 * iRowMax;                  //Размер строк консоли  vConsole mapCons;//                 ##  ###  ##     |
 int colConsoleMax = 1.7 * iColMax;                  //                                                            #######       |
                                                     //                                                               #          |
 int rowAzimut = 2;                                  //Вывод состояний координат при попадании в тупик rowAzimut++,              |
@@ -221,7 +221,7 @@ void main() {
         idLostVectorOrient  = 0; //Счетчик тупиков
 
         //Размер координат карты X = (от 0 до XMax-1),  Y = (от 0 до YMax-1)
-        YMax = (2.0 + boatMax * 0.02) * (boatMax - boatMin) + 2, XMax = 2.0 * YMax;  //Размер максимального корабля определяет размер плотности установки на карту флотилии
+        YMax = (2.0 + boatMax * 0.02) * (boatMax - boatMin) + 2; XMax = 2.0 * YMax;  //Размер максимального корабля определяет размер плотности установки на карту флотилии
         highMap = YMax, withMap = XMax + 1;
 
         // Координаты карты Left, Right
@@ -230,7 +230,7 @@ void main() {
 
         iRowMax = 2 * leftRow + highMap;
         iColMax = 2 * rightCol;
-        rowConsoleMax = 4.6 * iRowMax;                  //Размер срок консоли
+        rowConsoleMax = 4.6 * iRowMax;                  //Размер строк консоли
         colConsoleMax = 1.7 * iColMax;
 
         rowAzimut = 2;                                  //Вывод состояний координат при попадании в тупик rowAzimut++, colAzimut
