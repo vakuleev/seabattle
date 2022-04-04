@@ -314,19 +314,17 @@ void setParamGame(int row, int col, int colSetParametr , T& setParametr, int min
 
 //Главная функция обмена ударами флотов
 void viewSeaBatalia(mField** pMapFieldsL, mField** pMapFieldsR, int& rowListDamage, int lCol, int rCol) {
-    //глобальная переменная для поиска координат корабля 
-    //bool searchFirstDiscoveredL = false, searchFirstDiscoveredR = false;
-    //глобальная переменная первого попадания в корабль для поиска координат корабля
+    //переменная первого попадания в корабль для поиска координат корабля
     int iFirstDiscoveredL = -1, jFirstDiscoveredL = -1, iFirstDiscoveredR = -1, jFirstDiscoveredR = -1;
 
     int iFireL = 0, iFireR = 0;
     int iL = -1, jL = -1, iR = -1, jR = -1, orientBoatL   = -1, orientBoatR  = -1;
     int countDamageL = 0, countDamageR = 0, iLPalubBoatON = 0, iRPalubBoatON = 0;
     bool searchNextPartShipL = false, searchNextPartShipR = false;
+    //Цикл почередный обмен ударами контролируется внутри viewSeaBatalia: если одна флотилия раньше уничтожит противника цикл прерывается  ! 
     while (countDamageL < AllFieldsBoat && countDamageR < AllFieldsBoat) { //Пока все корабли не уничтожены
         //Колонка вывода результатов попадания под картой противника 
 
-        //почередный обмен ударами контролируется внутри attackBattleField: если одна флотилия раньше уничтожит противника цикл прерывается  ! 
         //Команду флотилии L атакует компьютер на основе определенного уровня интеллекта onIntelligenceR (0 - 3)
         shipsFlotMapAttack(iFirstDiscoveredL, jFirstDiscoveredL, iL, jL, orientBoatL, pMapFieldsL, rowListDamage, rCol, iFireL, countDamageL, searchNextPartShipL, false, onIntelligenceR);
         if (countDamageL == AllFieldsBoat || countDamageR == AllFieldsBoat) break;
@@ -335,7 +333,6 @@ void viewSeaBatalia(mField** pMapFieldsL, mField** pMapFieldsR, int& rowListDama
         //Команду флотилии R атакует интелектуальный выбор координат или gameUser, добивание обнаруженного активно!
         shipsFlotMapAttack(iFirstDiscoveredR, jFirstDiscoveredR, iR, jR, orientBoatR, pMapFieldsR, rowListDamage, lCol, iFireR, countDamageR, searchNextPartShipR, gameUser, onIntelligenceL);
     }
-    //        mapCons.TextColor(cSpace);
     mapCons.TextBackground(cSpaceBackGround);
     if (countDamageL < countDamageR) {
         mapCons.TextColor(COLOR_YELLOW);
